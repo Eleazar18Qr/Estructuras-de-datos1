@@ -14,5 +14,5 @@ def saludar(nombre):
 
 if __name__ == "__main__":
     nombre_usuario = input("Ingresa tu nombre: ")
-    mensaje_saludo = saludar(nombre_usuario)
-    print(mensaje_saludo)
+    mensaje_saludos = saludar(nombre_usuario)
+    print(mensaje_saludos)
