@@ -11,7 +11,7 @@ def adicionar_numeros(a, b):
 
 # Ejemplo de uso
 numero1 = 5
-numero2 = 10
+numero2 = 20
 
 resultado = adicionar_numeros(numero1, numero2)
 print(f"La suma de {numero1} y {numero2} es: {resultado}")
