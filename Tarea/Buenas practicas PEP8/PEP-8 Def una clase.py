@@ -10,7 +10,7 @@ def adicionar_numeros(a, b):
 
 
 # Ejemplo de uso
-numero1 = 5
+numero1 = 50
 numero2 = 20
 
 resultado = adicionar_numeros(numero1, numero2)
