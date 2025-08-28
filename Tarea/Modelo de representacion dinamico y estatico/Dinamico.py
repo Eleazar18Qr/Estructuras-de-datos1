@@ -1,7 +1,7 @@
 
 class AutomovilDinamico:
     def __init__(self, marca, modelo, anio, color):
-        # Estructura dinámica: diccionario
+        
         self.datos = {
             "marca": marca,
             "modelo": modelo,
@@ -35,7 +35,7 @@ class AutomovilDinamico:
     def set_color(self, color):
         self.datos["color"] = color
 
-# Ejemplo de uso
+
 auto_dinamico = AutomovilDinamico("Honda", "Civic", 2021, "Negro")
 print(auto_dinamico.get_modelo())  # Civic
 auto_dinamico.set_anio(2022)

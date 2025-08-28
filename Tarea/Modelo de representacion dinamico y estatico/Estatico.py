@@ -1,7 +1,7 @@
 
 class AutomovilEstatico:
     def __init__(self, marca, modelo, anio, color):
-        # Estructura estática: lista con tamaño fijo
+        
         self.datos = [None] * 4
         self.datos[0] = marca
         self.datos[1] = modelo
@@ -34,7 +34,7 @@ class AutomovilEstatico:
     def set_color(self, color):
         self.datos[3] = color
 
-# Ejemplo de uso
+
 auto_estatico = AutomovilEstatico("Toyota", "Corolla", 2020, "Rojo")
 print(auto_estatico.get_marca())  # Toyota
 auto_estatico.set_color("Azul")
