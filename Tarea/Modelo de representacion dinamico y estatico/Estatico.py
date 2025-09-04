@@ -38,4 +38,4 @@ class AutomovilEstatico:
 auto_estatico = AutomovilEstatico("Toyota", "Corolla", 2020, "Rojo")
 print(auto_estatico.get_marca())  # Toyota
 auto_estatico.set_color("Azul")
-print(auto_estatico.get_color())  # Azul
+print(auto_estatico.get_color())  # Azul    
