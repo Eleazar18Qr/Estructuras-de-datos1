@@ -10,7 +10,7 @@ from kivy.graphics import InstructionGroup
 from kivy.app import App
 from kivy.metrics import dp 
 
-# --- Widget Personalizado para Dibujar la Forma ---
+# --- Widget Personalizado para Dibujar la Forma geometrica ---
 
 class ShapeDisplay(Widget):
     """
