@@ -1,4 +1,4 @@
-# view.py (Código COMPLETO Y FINAL)
+# view.py
 
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
@@ -18,25 +18,26 @@ COLOR_COMPLETED = (0, 0.6, 0, 1)
 class TodoListView(BoxLayout):
     """
     Vista (Interfaz de Usuario) de la aplicación de Lista de Tareas con Kivy.
+    Diseño funcional.
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.orientation = 'vertical'
         self.controller = None 
 
-        # Fondo Beige Suave
+        # 1. Fondo Beige Suave (Canvas del widget principal)
         with self.canvas.before:
             Color(*COLOR_BEIGE)  
             self.rect = Rectangle(size=self.size, pos=self.pos)
             self.bind(size=self._update_rect, pos=self._update_rect)
 
-        # Contenedor Principal (Input/Display a la izquierda y Botones a la derecha)
+        # Contenedor Principal
         self.main_container = BoxLayout(orientation='horizontal', size_hint_y=0.9, padding=dp(10))
         
         # === Panel Izquierdo (Input y Display) ===
         self.left_panel = BoxLayout(orientation='vertical', size_hint_x=0.75, spacing=dp(10))
 
-        # 1. Campo de Texto (Nueva Tarea)
+        # Campo de Texto (Nueva Tarea)
         self.task_input = TextInput(
             text='Nueva tarea',
             size_hint_y=None, height=dp(40),
@@ -47,7 +48,7 @@ class TodoListView(BoxLayout):
         )
         self.left_panel.add_widget(self.task_input)
 
-        # 2. Recuadro Grande para Mostrar Tareas (ScrollView)
+        # Recuadro Grande para Mostrar Tareas (ScrollView)
         self.tasks_list_layout = BoxLayout(
             orientation='vertical',
             spacing=dp(5), 
@@ -56,19 +57,17 @@ class TodoListView(BoxLayout):
         )
         self.tasks_list_layout.bind(minimum_height=self.tasks_list_layout.setter('height'))
         
-        # ScrollView (NO tiene background_color)
         self.scroll_view = ScrollView() 
         self.scroll_view.add_widget(self.tasks_list_layout)
         
-        # Contenedor para dibujar el fondo blanco alrededor de la lista
+        # Contenedor para dibujar el fondo blanco (solución al error de ScrollView)
         list_background = BoxLayout(padding=dp(1), size_hint_y=1)
         
-        # Dibujar el fondo blanco usando Canvas
         with list_background.canvas.before:
             Color(*COLOR_WHITE)
             self.list_bg_rect = Rectangle(size=list_background.size, pos=list_background.pos)
         
-        # Vinculación corregida para el Canvas (usando setattr)
+        # Vinculación corregida usando lambda/setattr
         list_background.bind(size=lambda instance, value: setattr(self.list_bg_rect, 'size', value), 
                              pos=lambda instance, value: setattr(self.list_bg_rect, 'pos', value))
             
@@ -89,7 +88,7 @@ class TodoListView(BoxLayout):
                 background_normal='',
                 background_color=COLOR_WHITE,
                 border=[dp(1), dp(1), dp(1), dp(1)],
-                # border_color=COLOR_DARK_GREEN <--- ¡Línea eliminada!
+                # border_color fue eliminado para corregir el error de inicialización
             )
             btn.bind(on_press=on_press_handler)
             return btn
@@ -187,4 +186,4 @@ class TodoListView(BoxLayout):
             
             self.tasks_list_layout.add_widget(task_widget)
         
-        self.feedback_label.text = "Lista de tareas mostrada."
+        self.feedback_label.text = "Lista

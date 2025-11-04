@@ -1,12 +1,11 @@
 # model.py
 
 # =================================================================
-# 1. Clase Nodo con Getters y Setters
+# 1. Clase Node con Getters y Setters
 # =================================================================
 class Node:
     """
     Nodo de la Lista Enlazada. Representa una tarea.
-    Estructura: _data (descripción), _status (Pendiente/Completada), _next (puntero).
     """
     def __init__(self, data=None, status='Pendiente'):
         self._data = data
@@ -14,25 +13,15 @@ class Node:
         self._next = None
 
     # --- Getters ---
-    def get_data(self):
-        return self._data
-
-    def get_status(self):
-        return self._status
-
-    def get_next(self):
-        return self._next
+    def get_data(self): return self._data
+    def get_status(self): return self._status
+    def get_next(self): return self._next
 
     # --- Setters ---
-    def set_data(self, new_data):
-        self._data = new_data
-
+    def set_data(self, new_data): self._data = new_data
     def set_status(self, new_status):
-        if new_status in ['Pendiente', 'Completada']:
-            self._status = new_status
-        else:
-            raise ValueError("Estado no válido. Use 'Pendiente' o 'Completada'.")
-
+        if new_status in ['Pendiente', 'Completada']: self._status = new_status
+        else: raise ValueError("Estado no válido. Use 'Pendiente' o 'Completada'.")
     def set_next(self, new_next_node):
         if isinstance(new_next_node, Node) or new_next_node is None:
             self._next = new_next_node
@@ -52,9 +41,6 @@ class DynamicLinkedList:
     # --- Funcionalidades de Tarea ---
 
     def add_task(self, description, to_start=False):
-        """
-        Agrega una nueva tarea (nodo) al final o al principio de la lista.
-        """
         new_node = Node(description, 'Pendiente')
         
         if to_start or not self.head:
@@ -68,10 +54,6 @@ class DynamicLinkedList:
         current.set_next(new_node)
 
     def search_task(self, description):
-        """
-        Busca una tarea por su descripción.
-        Retorna la tupla (descripción, estado) si se encuentra, o None.
-        """
         current = self.head
         while current:
             if current.get_data() == description:
@@ -80,10 +62,6 @@ class DynamicLinkedList:
         return None
 
     def mark_completed(self, description):
-        """
-        Busca una tarea y cambia su estado a 'Completada'.
-        Retorna True si se completó, False si no se encontró.
-        """
         current = self.head
         while current:
             if current.get_data() == description:
@@ -93,18 +71,12 @@ class DynamicLinkedList:
         return False
 
     def delete_task(self, description):
-        """
-        Busca una tarea y la elimina de la lista.
-        Retorna True si se eliminó, False si no se encontró.
-        """
         current = self.head
         
-        # Caso 1: Eliminar la cabeza
         if current and current.get_data() == description:
             self.head = current.get_next()
             return True
 
-        # Caso 2: Buscar y eliminar en el medio o al final
         prev = None
         while current and current.get_data() != description:
             prev = current
@@ -117,10 +89,6 @@ class DynamicLinkedList:
         return True
 
     def display_tasks(self):
-        """
-        Recorre la lista y retorna una lista de tuplas con todas las tareas
-        (descripción, estado).
-        """
         tasks = []
         current = self.head
         while current:

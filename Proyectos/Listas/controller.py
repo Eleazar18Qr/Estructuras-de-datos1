@@ -12,10 +12,9 @@ class TodoListController:
 
     def add_task(self, description, to_start=False):
         """
-        Agrega una nueva tarea al modelo. NO actualiza la vista inmediatamente.
-        Ignora el texto inicial del campo de input.
+        Agrega una nueva tarea al modelo. 
+        Ignora el texto inicial 'Nueva tarea'.
         """
-        # Verifica que la descripción no esté vacía Y no sea el texto inicial
         if description.strip() and description.strip() != 'Nueva tarea':
             self.model.add_task(description.strip(), to_start)
             return True
