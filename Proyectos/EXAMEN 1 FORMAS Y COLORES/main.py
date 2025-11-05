@@ -1,4 +1,4 @@
-# main.py  listoo
+# main.py  listoou
 import kivy
 from kivy.app import App
 from view import ShapeView
