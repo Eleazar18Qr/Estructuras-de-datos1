@@ -1,10 +1,8 @@
 # controller.py
-import model # <--- SOLUCIÓN: Importamos el módulo completo
-import view  # <--- SOLUCIÓN: Importamos el módulo completo
+import model 
+import view  
 
-# Eliminamos la verificación de tipos para evitar conflictos con la importación
-# from typing import TYPE_CHECKING 
-# if TYPE_CHECKING: from view import CalculatorView 
+
 
 class CalculatorController:
     """Controlador para la aplicación de calculadora de expresiones."""
